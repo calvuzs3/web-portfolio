@@ -18,8 +18,8 @@ FROM base AS runner
 WORKDIR /src/app
 ENV NODE_ENV=production
 COPY --from=builder /src/app/public ./public
-COPY --from=builder /src/app/.next/standalone ./
-COPY --from=builder /src/app/.next/static ./.next/static
+# COPY --from=builder /src/app/.next/standalone ./
+# COPY --from=builder /src/app/.next/static ./.next/static
 
 EXPOSE 3000
-CMD ["bun", "run", "page.tsx"]
+CMD ["bun", "run", "start"]
