@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstname} ${this.lastname}`;
   },
-  role: "Worker Installer Programmer",
+  role: "Worker - Installer - Programmer",
   avatar: "/images/avatar.jpg",
   location: "europe/rome", // expecting the iana time zone identifier, e.g., 'europe/vienna'
   languages: ["italian", "english"], // optional: leave the array empty if you don't want to display languages
@@ -52,13 +52,15 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>IT just for fun</>,
+  headline: <>IT for fun</>,
   subline: (
     <>
-      I'm Luca, based in Italy,
-      <br />a coder for fun
+      Sono Luca, vivo in Italia,
       <br />
-      After hours, I build my own projects.
+      programmatore per divertimento
+      <br />
+      <br />
+      <code>First make it run, then make it faster</code>.
     </>
   ),
 };
@@ -83,31 +85,32 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        When something new appears in my life I can take a fresh breath of air.
-        It becomes a challenge.
+        Le esperienze di medio e lungo corso, testimoniano la mia dedizione al
+        lavoro, la capacità di lavorare in squadra con l'occhio attento alla
+        sicurezza ed alla salute, il raggiungimento degli obiettivi lavorativi.
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Esperienze lavorative",
     experiences: [
       {
         company: "Cartiere del Garda S.p.A.",
-        timeframe: "2010 - Present",
-        role: "Continuus cycle Worker",
+        timeframe: "2010 - Oggi",
+        role: "Operaio a ciclo continuo",
         achievements: [
+          <>Conduttore di bobinatrice</>,
           <>
-            Winder Conductor.
-            <br />
-            <br />I work with 4 differnet winders
+            Lavoro quotidiano su differenti bobinatrici quali
             <ul>
               <li>Jagenberg - VariRoll</li>
               <li>Jagenberg - VariPlus</li>
               <li>Voith - VariFlex</li>
             </ul>
-            <br />
-            The new installed winder is upcoming
+          </>,
+          <>
+            A breve la nuova installata
             <ul>
               <li>ACelli/Andritz - ACelli</li>
             </ul>
@@ -126,9 +129,18 @@ const about = {
       {
         company: "Maxidraulica - Hidro",
         timeframe: "2000 - 2010",
-        role: "Installer",
+        role: "Operaio specializzato",
         achievements: [
-          <>Water, thermo, gas, air-conditioning and solar systems</>,
+          <>Installatore di impianti e sistemi</>,
+          <>
+            <ul>
+              <li>Solari - circolazione naturale e forzata</li>
+              <li>Termici - riscaldamento tradizionale, pavimento o parete</li>
+              <li>Climatizzazione - Utenze domestiche</li>
+              <li>Gas - Utenze domestiche</li>
+              <li>Acqua - Utenze domestiche</li>
+            </ul>
+          </>,
         ],
         images: [],
       },
@@ -140,7 +152,7 @@ const about = {
     institutions: [
       {
         name: "ITT Marconi - Rovereto",
-        description: <>Software development</>,
+        description: <>Informatica</>,
       },
     ],
   },

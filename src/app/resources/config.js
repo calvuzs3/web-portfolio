@@ -1,11 +1,11 @@
-const baseURL = "192.168.0.8";
+const baseURL = "localhost";
 
 const routes = {
-  "/": true,
+  // "/": true,
   "/about": true,
-  "/work": true,
-  "/blog": true,
-  "/gallery": true,
+  // "/work": true,
+  // "/blog": true,
+  // "/gallery": true,
 };
 
 // Enable password protection on selected routes
