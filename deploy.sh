@@ -4,10 +4,10 @@
 POSTGRES_USER="mp-xfiuser"
 POSTGRES_PASSWORD=$(openssl rand -base64 12) # Generate a random 12-character password
 POSTGRES_DB="mp-xfidb"
-SECRET_KEY="mp-xfi-my-secret"           # for the demo app
-NEXT_PUBLIC_SAFE_KEY=",mp-xfi-safe-key" # for the demo app
-DOMAIN_NAME="calvuz.net"                # replace with your own
-EMAIL="calvetti.luca@gmail.com"         # replace with your own
+SECRET_KEY="mp-xfi-my-secret"          # for the demo app
+NEXT_PUBLIC_SAFE_KEY="mp-xfi-safe-key" # for the demo app
+DOMAIN_NAME="www.calvuz.net"           # replace with your own
+EMAIL="calvetti.luca@gmail.com"        # replace with your own
 
 # Script Vars
 REPO_URL="https://github.com/calvuzs3/study-nextjs.git"
@@ -153,7 +153,7 @@ EOL
 sudo ln -s /etc/nginx/sites-available/mp-xfiapp /etc/nginx/sites-enabled/mp-xfiapp
 #
 # # Restart Nginx to apply the new configuration
-# sudo systemctl restart nginx
+sudo systemctl restart nginx
 #
 # Build and run the Docker containers from the app directory (~/myapp)
 cd $APP_DIR
