@@ -3,6 +3,7 @@ import mdx from "@next/mdx";
 if (process.env.NODE_ENV === "development") {
   console.log("info - lanURL:", 'http://${require("address").ip()}:3000');
 }
+// withMDX
 const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {},

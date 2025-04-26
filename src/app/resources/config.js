@@ -1,4 +1,4 @@
-const baseURL = "localhost";
+const baseURL = "www.calvuz.net";
 
 const routes = {
   // "/": true,
