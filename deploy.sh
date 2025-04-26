@@ -15,7 +15,7 @@ APP_DIR=~/mp-xfiapp
 SWAP_SIZE="1G" # Swap size of 1GB
 
 # Update package list and upgrade existing packages
-# sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 
 # Add Swap Space
 #echo "Adding swap space..."
@@ -50,15 +50,15 @@ SWAP_SIZE="1G" # Swap size of 1GB
 # sudo ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
 #
 # # Verify Docker Compose installation
-# docker-compose --version
-# if [ $? -ne 0 ]; then
-#   echo "Docker Compose installation failed. Exiting."
-#   exit 1
-# fi
+docker-compose --version
+if [ $? -ne 0 ]; then
+  echo "Docker Compose installation failed. Exiting."
+  exit 1
+fi
 #
 # # Ensure Docker starts on boot and start Docker service
-# sudo systemctl enable docker
-# sudo systemctl start docker
+sudo systemctl enable docker
+sudo systemctl start docker
 #
 # Clone the Git repository
 if [ -d "$APP_DIR" ]; then
@@ -88,14 +88,14 @@ echo "SECRET_KEY=$SECRET_KEY" >>"$APP_DIR/.env"
 echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >>"$APP_DIR/.env"
 
 # # Install Nginx
-# sudo apt install nginx -y
+sudo apt install nginx -y
 #
 # # Remove old Nginx config (if it exists)
-# sudo rm -f /etc/nginx/sites-available/myapp
-# sudo rm -f /etc/nginx/sites-enabled/myapp
+sudo rm -f /etc/nginx/sites-available/mp-xfiapp
+sudo rm -f /etc/nginx/sites-enabled/mp-xfiapp
 #
 # # Stop Nginx temporarily to allow Certbot to run in standalone mode
-# sudo systemctl stop nginx
+sudo systemctl stop nginx
 #
 # # Obtain SSL certificate using Certbot standalone mode
 # sudo apt install certbot -y
@@ -111,12 +111,12 @@ echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >>"$APP_DIR/.env"
 # fi
 #
 # # Create Nginx config with reverse proxy, SSL support, rate limiting, and streaming support
-# sudo cat > /etc/nginx/sites-available/xfiapp <<EOL
-# limit_req_zone \$binary_remote_addr zone=mylimit:10m rate=10r/s;
+sudo cat >/etc/nginx/sites-available/mp-xfiapp <<EOL
+limit_req_zone \$binary_remote_addr zone=mylimit:10m rate=10r/s;
 #
-# server {
-#     listen 80;
-#     server_name $DOMAIN_NAME;
+server {
+    listen 80;
+    server_name $DOMAIN_NAME;
 #
 #     # Redirect all HTTP requests to HTTPS
 #     return 301 https://\$host\$request_uri;
@@ -132,25 +132,25 @@ echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >>"$APP_DIR/.env"
 #     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 #
 #     # Enable rate limiting
-#     limit_req zone=mylimit burst=20 nodelay;
+    limit_req zone=mylimit burst=20 nodelay;
 #
-#     location / {
-#         proxy_pass http://localhost:3000;
-#         proxy_http_version 1.1;
-#         proxy_set_header Upgrade \$http_upgrade;
-#         proxy_set_header Connection 'upgrade';
-#         proxy_set_header Host \$host;
-#         proxy_cache_bypass \$http_upgrade;
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host \$host;
+        proxy_cache_bypass \$http_upgrade;
 #
 #         # Disable buffering for streaming support
-#         proxy_buffering off;
-#         proxy_set_header X-Accel-Buffering no;
-#     }
-# }
-# EOL
+        proxy_buffering off;
+        proxy_set_header X-Accel-Buffering no;
+    }
+}
+EOL
 #
 # # Create symbolic link if it doesn't already exist
-# sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
+sudo ln -s /etc/nginx/sites-available/mp-xfiapp /etc/nginx/sites-enabled/mp-xfiapp
 #
 # # Restart Nginx to apply the new configuration
 # sudo systemctl restart nginx
