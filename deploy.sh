@@ -10,7 +10,7 @@ DOMAIN_NAME="www.calvuz.net"           # replace with your own
 EMAIL="calvetti.luca@gmail.com"        # replace with your own
 
 # Script Vars
-REPO_URL="https://github.com/calvuzs3/study-nextjs.git"
+REPO_URL="https://github.com/calvuzs3/magic-portfolio.git"
 APP_DIR=~/mp-xfiapp
 SWAP_SIZE="1G" # Swap size of 1GB
 
@@ -88,7 +88,7 @@ echo "SECRET_KEY=$SECRET_KEY" >>"$APP_DIR/.env"
 echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >>"$APP_DIR/.env"
 
 # # Install Nginx
-sudo apt install nginx -y
+# sudo apt install nginx -y
 #
 # # Remove old Nginx config (if it exists)
 sudo rm -f /etc/nginx/sites-available/mp-xfiapp
