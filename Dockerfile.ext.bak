@@ -1,0 +1,37 @@
+FROM oven/bun:alpine AS base
+WORKDIR /
+
+# Stage 1: Install dependencies
+FROM base AS install 
+RUN mkdir -p /temp/dev
+COPY package.json bun.lock /temp/dev/
+RUN cd /temp/dev && bun install --frozen-lockfile
+
+# Stage 2: install with --production (exclude devDependencies)
+RUN mkdir -p /temp/prod
+COPY package.json bun.lock /temp/prod/
+RUN cd /temp/prod && bun install --frozen-lockfile --production
+# copy node_modules from temp directory
+# then copy all (non-ignored) project files into the image
+FROM base AS prerelease
+COPY --from=install /temp/dev/node_modules node_modules
+COPY . .
+
+# Stage 3: Production server
+FROM base AS release
+ENV NODE_ENV=production
+# # RUN bun test
+RUN bun run build
+# COPY --from=builder /public ./public
+# COPY --from=builder .next/standalone ./ #strongly recommended
+# COPY --from=builder .next/static ./.next/static
+# copy production dependencies and source code into final image
+COPY --from=install /temp/prod/node_modules node_modules
+# COPY --from=prerelease /usr/src/app/index.ts .
+# COPY --from=prerelease /usr/src/app/package.json .
+COPY . . 
+
+# Final Stage: run the app
+USER bun
+EXPOSE 3000/tcp
+CMD ["bun", "run", "start"]
