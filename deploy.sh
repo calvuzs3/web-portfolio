@@ -69,6 +69,7 @@ else
   # git clone $REPO_URL $APP_DIR
   cd $APP_DIR
 fi
+cd ..
 
 # For Docker internal communication ("db" is the name of Postgres container)
 DATABASE_URL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@db:5432/$POSTGRES_DB"
@@ -91,11 +92,11 @@ echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >>"$APP_DIR/.env"
 # sudo apt install nginx -y
 #
 # # Remove old Nginx config (if it exists)
-sudo rm -f /etc/nginx/sites-available/mp-xfiapp
-sudo rm -f /etc/nginx/sites-enabled/mp-xfiapp
+# sudo rm -f /etc/nginx/sites-available/mp-xfiapp
+# sudo rm -f /etc/nginx/sites-enabled/mp-xfiapp
 #
 # # Stop Nginx temporarily to allow Certbot to run in standalone mode
-sudo systemctl stop nginx
+# sudo systemctl stop nginx
 #
 # # Obtain SSL certificate using Certbot standalone mode
 # sudo apt install certbot -y
@@ -159,7 +160,7 @@ sudo systemctl restart nginx
 cd $APP_DIR
 sudo docker-compose up --build -d
 
-# Check if Docker Compose started correctly
+# Check if Docker Compose started correctly e
 if ! sudo docker-compose ps | grep "Up"; then
   echo "Docker containers failed to start. Check logs with 'docker-compose logs'."
   exit 1
