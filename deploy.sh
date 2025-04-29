@@ -11,7 +11,7 @@ EMAIL="calvetti.luca@gmail.com"        # replace with your own
 
 # Script Vars
 REPO_URL="https://github.com/calvuzs3/magic-portfolio.git"
-APP_DIR=~/mp-xfiapp
+APP_DIR=./magic-portfolio
 SWAP_SIZE="1G" # Swap size of 1GB
 
 # Update package list and upgrade existing packages
@@ -66,7 +66,7 @@ if [ -d "$APP_DIR" ]; then
   cd $APP_DIR && git pull
 else
   echo "Cloning repository from $REPO_URL..."
-  git clone $REPO_URL $APP_DIR
+  # git clone $REPO_URL $APP_DIR
   cd $APP_DIR
 fi
 
