@@ -11,6 +11,8 @@ services:
       - NODE_ENV=production
     depends_on:
       - db
+    ports:
+      - 3000:3000
     networks:
       - web-network
 
