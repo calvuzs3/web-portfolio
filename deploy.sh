@@ -175,12 +175,13 @@ sudo systemctl restart nginx
 #
 # Build and run the Docker containers from the app directory (~/myapp)
 cd $APP_DIR
-docker compose build
-docker compose up -d
+docker network create -d bridge web-network
+sudo docker compose build
+sudo docker compose up -d
 
 # Check if Docker Compose started correctly e
-if ! sudo docker-compose ps | grep "Up"; then
-  echo "Docker containers failed to start. Check logs with 'docker-compose logs'."
+if ! sudo docker ps | grep "Up"; then
+  echo "Docker containers failed to start. Check logs with 'docker logs'."
   exit 1
 fi
 
