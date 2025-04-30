@@ -10,7 +10,7 @@ DOMAIN_NAME="www.calvuz.net"           # replace with your own
 EMAIL="calvetti.luca@gmail.com"        # replace with your own
 
 # Script Vars
-REPO_URL="https://github.com/calvuzs3/magic-portfolio.git"
+REPO_URL="luke@192.168.0.8:~/src/next/magic-portfolio"
 APP_DIR=./magic-portfolio
 SWAP_SIZE="1G" # Swap size of 1GB
 
@@ -49,8 +49,25 @@ sudo apt update && sudo apt upgrade -y
 # # Ensure Docker Compose is executable and in path
 # sudo ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
 #
-# # Verify Docker Compose installation
-docker-compose --version
+
+# Add Docker's official GPG key:
+sudo apt-get install -y ca-certificates curl lsb-release apt-transport-https software-properties-common
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |
+  sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+sudo apt-get update
+
+# Install DOCKER1
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Verify Docker Compose installation
+docker compose --version
 if [ $? -ne 0 ]; then
   echo "Docker Compose installation failed. Exiting."
   exit 1
@@ -158,7 +175,8 @@ sudo systemctl restart nginx
 #
 # Build and run the Docker containers from the app directory (~/myapp)
 cd $APP_DIR
-sudo docker-compose up --build -d
+docker compose build
+docker compose up -d
 
 # Check if Docker Compose started correctly e
 if ! sudo docker-compose ps | grep "Up"; then

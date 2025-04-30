@@ -1,4 +1,5 @@
 # # Dockerfile per Next.js con Bun
+# vim:foldmethod=marker
 
 # Stage1:# Fase di build con Node.js  {{{
 FROM node:20-alpine AS builder
