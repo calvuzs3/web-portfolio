@@ -82,7 +82,7 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Introduzione",
     description: (
       <>
         Le esperienze di medio e lungo corso, testimoniano la mia dedizione al
@@ -148,7 +148,7 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Studi",
     institutions: [
       {
         name: "ITT Marconi - Rovereto",
@@ -158,7 +158,7 @@ const about = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Skills",
     skills: [
       {
         title: "Next.js",
@@ -181,24 +181,24 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Cose trovate in giro...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
 
 const work = {
-  label: "Work",
-  title: "My projects",
+  label: "Lavori",
+  title: "I miei lavori"
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
 
 const gallery = {
-  label: "Gallery",
-  title: "My photo gallery",
-  description: `A photo collection by ${person.name}`,
+  label: "Galleria",
+  title: "La mia galleria",
+  description: `Una collezione di foto, by ${person.name}`,
   // Images from https://pexels.com
   images: [
     {
