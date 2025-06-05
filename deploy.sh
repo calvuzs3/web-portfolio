@@ -17,16 +17,6 @@ SWAP_SIZE="1G" # Swap size of 1GB
 # Update package list and upgrade existing packages
 sudo apt update && sudo apt upgrade -y
 
-# Add Swap Space
-#echo "Adding swap space..."
-#sudo fallocate -l $SWAP_SIZE /swapfile
-#sudo chmod 600 /swapfile
-#sudo mkswap /swapfile
-#sudo swapon /swapfile
-
-# Make swap permanent
-#echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
 # Add Docker's official GPG key:
 sudo apt-get install -y ca-certificates curl lsb-release apt-transport-https software-properties-common
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -88,35 +78,27 @@ sudo systemctl restart nginx
 # Navigate to app directory for Docker operations
 cd $APP_DIR
 
-echo "=== DOCKER CLEANUP AND DEPLOYMENT ==="
+echo "=== SAFE DOCKER DEPLOYMENT ==="
 
-# Stop and remove existing containers
+# Stop existing containers gracefully
 echo "Stopping existing containers..."
 sudo docker compose down || true
 
-# Remove old containers with the same name pattern
-echo "Removing old containers..."
+# SAFE CLEANUP - Only remove stopped containers, NOT images or volumes
+echo "Removing only stopped containers..."
 sudo docker container prune -f
-
-# Remove unused images to free up space and avoid conflicts
-echo "Removing unused Docker images..."
-sudo docker image prune -a -f
-
-# Remove unused volumes (be careful with this in production)
-echo "Removing unused Docker volumes..."
-sudo docker volume prune -f
 
 # Create or recreate the network
 echo "Setting up Docker network..."
 docker network create -d bridge web-network || echo "Network already exists"
 
-# Build with no cache to ensure fresh build
-echo "Building Docker images with no cache..."
-sudo docker compose build --no-cache
+# Build with cache for faster deployment (preserves existing images)
+echo "Building Docker images..."
+sudo docker compose build
 
-# Start containers with force recreate
-echo "Starting containers with force recreate..."
-sudo docker compose up -d --force-recreate
+# Start containers
+echo "Starting containers..."
+sudo docker compose up -d
 
 # Wait a moment for containers to start
 sleep 10
@@ -137,23 +119,17 @@ echo "=== RECENT LOGS ==="
 sudo docker compose logs --tail=20
 
 # Output final message
-echo "Deployment complete. 
+echo "Safe deployment complete. 
+
+✅ PostgreSQL data preserved
+✅ Docker images preserved
+✅ Only application containers rebuilt
 
 Your Next.js app and PostgreSQL database are now running. 
-Next.js is available at https://$DOMAIN_NAME, and the 
-PostgreSQL database is accessible from the web service.
-
-The .env file has been created with the following values:
-- POSTGRES_USER
-- POSTGRES_PASSWORD (randomly generated)
-- POSTGRES_DB
-- DATABASE_URL
-- DATABASE_URL_EXTERNAL
-- SECRET_KEY
-- NEXT_PUBLIC_SAFE_KEY
+Next.js is available at https://$DOMAIN_NAME
 
 === TROUBLESHOOTING COMMANDS ===
 - Check logs: sudo docker compose logs
 - Restart services: sudo docker compose restart
-- Rebuild from scratch: sudo docker compose down && sudo docker compose build --no-cache && sudo docker compose up -d --force-recreate
+- Manual rebuild if needed: sudo docker compose build --no-cache
 "
