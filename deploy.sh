@@ -10,7 +10,7 @@ DOMAIN_NAME="www.calvuz.net"           # replace with your own
 EMAIL="calvetti.luca@gmail.com"        # replace with your own
 
 # Script Vars
-REPO_URL="luke@192.168.0.8:~/src/next/magic-portfolio"
+REPO_URL="https://github.com/calvuzs3/web-portfolio.git"
 APP_DIR=./web-portfolio
 SWAP_SIZE="1G" # Swap size of 1GB
 
