@@ -1,8 +1,7 @@
-# web-portfolio
+# ***web-portfolio***
+
 Personal magic portfolio web site
 
-
-=======
 # **Build your portfolio with Once UI's Magic Portfolio**
 
 View the [demo here](https://demo.magic-portfolio.com).
