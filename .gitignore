@@ -27,7 +27,6 @@ reminder
 # misc
 .DS_Store
 *.pem
-*.bak
 *.old
 
 # debug
