@@ -7,7 +7,6 @@ import {
   Button,
   Avatar,
   RevealFx,
-  // Arrow,
   Column,
 } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
@@ -121,9 +120,28 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
+
+      {/* Sezione progetti principale - mostra QDue */}
       <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+        <Column fillWidth gap="m">
+          <Flex fillWidth gap="24" mobileDirection="column">
+            <Flex flex={1} paddingLeft="l">
+              <Heading as="h2" variant="display-strong-xs" wrap="balance">
+                Il mio progetto
+              </Heading>
+            </Flex>
+            <Flex flex={3} paddingX="20">
+              <Text variant="body-default-m" onBackground="neutral-weak">
+                Dal reparto industriale al codice: QDue rappresenta l'incontro
+                tra esperienza pratica e passione per la programmazione.
+              </Text>
+            </Flex>
+          </Flex>
+          <Projects range={[1, 1]} />
+        </Column>
       </RevealFx>
+
+      {/* Sezione blog se abilitata */}
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l">
@@ -136,7 +154,8 @@ export default function Home() {
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
+
+      {/* Newsletter se abilitata */}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

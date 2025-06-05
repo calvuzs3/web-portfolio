@@ -1,9 +1,9 @@
 const baseURL = "www.calvuz.net";
 
 const routes = {
-  // "/": true,
+  "/": true,
   "/about": true,
-  // "/work": true,
+  "/work": true,
   // "/blog": true,
   // "/gallery": true,
 };

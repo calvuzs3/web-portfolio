@@ -52,15 +52,19 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>IT for fun</>,
+  headline: <>Mani in pasta, codice per passione</>,
   subline: (
     <>
-      Sono Luca, vivo in Italia,
+      Sono Luca, vivo in Italia.
       <br />
-      programmatore per divertimento
+      Di giorno lavoro nei reparti industriali,
+      <br />
+      di sera programmo per il puro divertimento di creare.
       <br />
       <br />
-      <code>First make it run, then make it faster</code>.
+      <code>"First make it work, then make it better"</code>
+      <br />
+      <small>— La mia filosofia, dal reparto al codice</small>
     </>
   ),
 };
@@ -85,9 +89,11 @@ const about = {
     title: "Introduzione",
     description: (
       <>
-        Le esperienze di medio e lungo corso, testimoniano la mia dedizione al
-        lavoro, la capacità di lavorare in squadra con l'occhio attento alla
-        sicurezza ed alla salute, il raggiungimento degli obiettivi lavorativi.
+        Due mondi che si completano: l'esperienza pratica maturata in anni di
+        lavoro industriale a ciclo continuo, e la passione per la programmazione
+        che mi accompagna nei ritagli di tempo. Le competenze tecniche del
+        lavoro quotidiano si fondono con la creatività del coding, creando un
+        approccio unico ai problemi e alle soluzioni.
       </>
     ),
   },
@@ -100,9 +106,9 @@ const about = {
         timeframe: "2010 - Oggi",
         role: "Operaio a ciclo continuo",
         achievements: [
-          <>Conduttore di bobinatrice</>,
+          <>Conduttore specializzato di bobinatrici industriali</>,
           <>
-            Lavoro quotidiano su differenti bobinatrici quali
+            Esperienza quotidiana su diverse tipologie di macchinari:
             <ul>
               <li>Jagenberg - VariRoll</li>
               <li>Jagenberg - VariPlus</li>
@@ -110,36 +116,38 @@ const about = {
             </ul>
           </>,
           <>
-            A breve la nuova installata
+            Prossimamente formazione sulla nuova installazione:
             <ul>
               <li>ACelli/Andritz - ACelli</li>
             </ul>
           </>,
+          <>Lavoro in team su turni H24, 4 giorni ON / 2 giorni OFF</>,
+          <>Focus costante su sicurezza, qualità e ottimizzazione processi</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          // {
-          //   src: "/images/projects/project-01/cover-01.jpg",
-          //   alt: "Once UI Project",
-          //   width: 16,
-          //   height: 9,
-          // },
-        ],
+        images: [],
       },
       {
         company: "Maxidraulica - Hidro",
         timeframe: "2000 - 2010",
         role: "Operaio specializzato",
         achievements: [
-          <>Installatore di impianti e sistemi</>,
+          <>Installatore e manutentore di impianti</>,
           <>
+            Competenze sviluppate in:
             <ul>
-              <li>Solari - circolazione naturale e forzata</li>
-              <li>Termici - riscaldamento tradizionale, pavimento o parete</li>
-              <li>Climatizzazione - Utenze domestiche</li>
-              <li>Gas - Utenze domestiche</li>
-              <li>Acqua - Utenze domestiche</li>
+              <li>Impianti solari - circolazione naturale e forzata</li>
+              <li>
+                Sistemi termici - riscaldamento tradizionale, a pavimento e
+                parete
+              </li>
+              <li>Climatizzazione per utenze domestiche</li>
+              <li>Impianti gas per utenze domestiche</li>
+              <li>Sistemi idrici per utenze domestiche</li>
             </ul>
+          </>,
+          <>
+            Problem solving pratico e adattamento a diverse situazioni di
+            cantiere
           </>,
         ],
         images: [],
@@ -152,28 +160,58 @@ const about = {
     institutions: [
       {
         name: "ITT Marconi - Rovereto",
-        description: <>Informatica</>,
+        description: (
+          <>Informatica - Le prime basi che hanno acceso la passione</>
+        ),
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Skills",
+    title: "Skills & Passioni",
     skills: [
       {
-        title: "Next.js",
+        title: "Sviluppo Android con AI",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>
+            Creo app Android usando Java e l'ausilio dell'intelligenza
+            artificiale. Il mio progetto QDue dimostra come l'AI possa
+            trasformare il processo di sviluppo, migliorando sia la qualità del
+            codice che l'esperienza di apprendimento.
+          </>
         ),
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
+            src: "/images/projects/qdue/qdue_feature_graphic_1024x500.png",
+            alt: "QDue App Screenshot",
             width: 16,
             height: 9,
           },
         ],
+      },
+      {
+        title: "Problem Solving Industriale",
+        description: (
+          <>
+            Anni di esperienza in ambiente industriale a ciclo continuo hanno
+            sviluppato un approccio metodico ai problemi: analisi, diagnosi e
+            intervento rapido. Competenze che si rivelano preziose anche nel
+            debugging del codice.
+          </>
+        ),
+        images: [],
+      },
+      {
+        title: "Filosofia del Lavoro",
+        description: (
+          <>
+            "First make it work, then make it better" - Che si tratti di
+            sistemare una bobinatrice o di scrivere una funzione, l'approccio è
+            lo stesso: prima la funzionalità, poi l'ottimizzazione. Pragmatismo
+            e dedizione sono i miei strumenti principali.
+          </>
+        ),
+        images: [],
       },
     ],
   },
@@ -188,10 +226,10 @@ const blog = {
 };
 
 const work = {
-  label: "Lavori",
-  title: "I miei lavori",
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  label: "Progetti",
+  title: "I miei progetti",
+  description: `Progetti di sviluppo e sperimentazioni di ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
