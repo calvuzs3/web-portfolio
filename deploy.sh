@@ -11,7 +11,7 @@ EMAIL="calvetti.luca@gmail.com"        # replace with your own
 
 # Script Vars
 REPO_URL="https://github.com/calvuzs3/web-portfolio.git"
-APP_DIR=./magic-portfolio
+APP_DIR=./web-portfolio
 SWAP_SIZE="1G" # Swap size of 1GB
 
 # Update package list and upgrade existing packages

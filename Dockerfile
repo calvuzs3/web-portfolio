@@ -4,7 +4,7 @@
 # Stage1:# Fase di build con Node.js  {{{
 FROM node:20-alpine AS builder
 
-WORKDIR /magic-portfolio
+WORKDIR /web-portfolio
 
 # Copia i file di configurazione delle dipendenze
 COPY package.json package-lock.json* bun.lock* ./
@@ -29,22 +29,22 @@ RUN npm run build
 # Fase di produzione con Bun
 FROM oven/bun:1 AS runner
 
-WORKDIR /magic-portfolio
+WORKDIR /web-portfolio
 
 # Imposta variabili d'ambiente per la produzione
 ENV NODE_ENV=production
 
 # Copia il package.json e le dipendenze di produzione
-COPY --from=builder /magic-portfolio/package.json ./
-COPY --from=builder /magic-portfolio/node_modules ./node_modules
+COPY --from=builder /web-portfolio/package.json ./
+COPY --from=builder /web-portfolio/node_modules ./node_modules
 
 # Copia i file di build e i file statici
-COPY --from=builder /magic-portfolio/.next ./.next
-COPY --from=builder /magic-portfolio/public ./public
+COPY --from=builder /web-portfolio/.next ./.next
+COPY --from=builder /web-portfolio/public ./public
 
 # Copia il file next.config.mjs e altri file di configurazione necessari
-COPY --from=builder /magic-portfolio/next.config.mjs ./
-COPY --from=builder /magic-portfolio/.env* ./
+COPY --from=builder /web-portfolio/next.config.mjs ./
+COPY --from=builder /web-portfolio/.env* ./
 # }}}
 
 # Final Stage: avvia l'applicazione {{{
