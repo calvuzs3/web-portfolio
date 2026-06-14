@@ -132,7 +132,7 @@ export default function Home() {
             </Flex>
             <Flex flex={3} paddingX="20">
               <Text variant="body-default-m" onBackground="neutral-weak">
-                Dal reparto industriale al codice: QDue rappresenta l'incontro
+                Dai reparti industriali al codice: QDue rappresenta l'incontro
                 tra esperienza pratica e passione per la programmazione.
               </Text>
             </Flex>

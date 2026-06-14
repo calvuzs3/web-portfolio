@@ -1,0 +1,63 @@
+---
+title: "QReport — Field Inspection & Report Management"
+publishedAt: "2026-06-14"
+summary: "Android app for field technicians to manage inspection reports on robotic cells and industrial plants. Built with Kotlin, Jetpack Compose, Room and Ktor."
+images:
+  - "/images/projects/qreport/qreport_feature_graphic_1024x500.png"
+team:
+  - name: "Luca Calvetti"
+    role: "Android Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/luca-calvetti-61691753/"
+---
+
+## Overview
+
+QReport is a professional Android application designed for field technicians who manage
+inspection and maintenance reports on robotic cells and industrial plants.
+The app focuses on **offline-first** workflows: all data lives on the device
+and syncing to a remote server is entirely optional.
+
+> 🚧 **Coming soon on Google Play** — currently in internal testing.
+
+## Key Features
+
+- **Inspection reports** — create, edit and export structured reports for each plant or robotic cell.
+- **Photo attachments** — capture photos directly from the camera or attach existing files.
+- **Client & plant registry** — manage a local database of clients, sites and equipment.
+- **Maintenance log** — track intervention history per asset.
+- **Optional remote sync** — connect to your own Ktor/PostgreSQL server; disabled by default.
+- **Fully offline** — no account required, no data sent anywhere without explicit user action.
+
+## Privacy
+
+QReport collects **no personal data**. All content stays on the user's device.
+Remote sync, if activated, connects only to the server configured by the user —
+the developer has no access to any user data.
+
+→ [Full Privacy Policy](/work/qreport/privacy-policy)
+
+## Technologies Used
+
+- **Kotlin + Jetpack Compose** — modern Android UI toolkit.
+- **Room / SQLite** — local database for offline-first storage.
+- **EncryptedSharedPreferences** — secure storage for optional server credentials.
+- **Ktor Client** — HTTP client for optional remote synchronisation.
+- **Kotlin Coroutines + Flow** — reactive data layer.
+- **CameraX** — camera integration for photo capture.
+
+## Status
+
+| Stage | Status |
+|---|---|
+| Development | ✅ Complete |
+| Internal testing (Google Play) | 🔄 In progress |
+| Open testing | ⏳ Planned |
+| Production release | ⏳ Planned |
+
+## Download
+
+*Google Play listing coming soon.*
+
+/* Replace the href below once the Play Store page is live */
+/* [<img src="/images/projects/qreport/google-play-badge.png" alt="Get it on Google Play" height="60" />](https://play.google.com/store/apps/details?id=net.calvuz.qreport) */

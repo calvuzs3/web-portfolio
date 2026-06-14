@@ -6,6 +6,7 @@ const routes = {
   "/work": true,
   // "/blog": true,
   // "/gallery": true,
+    "/work/qreport/privacy-policy": true,
 };
 
 // Enable password protection on selected routes
