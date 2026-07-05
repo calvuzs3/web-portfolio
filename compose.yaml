@@ -9,8 +9,6 @@ services:
     environment:
       - PORT=3000
       - NODE_ENV=production
-    depends_on:
-      - db
     ports:
       - 3000:3000
     networks:
@@ -21,24 +19,6 @@ services:
         max-size: "10m"
         max-file: "3"
 
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - internal-network
-
-volumes:
-  postgres_data:
-
 networks:
   web-network:
     external: true # Questo permette di connettersi alla rete già esistente del reverse proxy
-  internal-network:
-    internal: true # Questa rete è interna e non accessibile dall'esterno

@@ -102,8 +102,23 @@ const about = {
     title: "Esperienze lavorative",
     experiences: [
       {
+        company: "Polytec S.p.A.",
+        timeframe: "2025 - Oggi",
+        role: "Elettromeccanico - Field Service Engineer",
+        achievements: [
+          <>Field Service Engineer su isole robotizzate presso i clienti</>,
+          <>
+            Installazione, manutenzione e troubleshooting elettromeccanico di
+            celle e isole robotizzate
+          </>,
+          <>Diagnosi e risoluzione guasti direttamente sul campo, a contatto con l'operatività del cliente</>,
+          <>Interfaccia tecnica tra azienda e cliente per interventi di assistenza</>,
+        ],
+        images: [],
+      },
+      {
         company: "Cartiere del Garda S.p.A.",
-        timeframe: "2010 - Oggi",
+        timeframe: "2010 - 2025",
         role: "Operaio a ciclo continuo",
         achievements: [
           <>Conduttore specializzato di bobinatrici industriali</>,

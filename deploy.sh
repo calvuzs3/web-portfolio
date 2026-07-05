@@ -1,17 +1,12 @@
 #!/bin/bash
 
 # Env Vars
-POSTGRES_USER="mp-xfiuser"
-POSTGRES_PASSWORD=$(openssl rand -base64 12) # Generate a random 12-character password
-POSTGRES_DB="mp-xfidb"
-SECRET_KEY="mp-xfi-my-secret"          # for the demo app
-NEXT_PUBLIC_SAFE_KEY="mp-xfi-safe-key" # for the demo app
-DOMAIN_NAME="www.calvuz.net"           # replace with your own
-EMAIL="calvetti.luca@gmail.com"        # replace with your own
+DOMAIN_NAME="www.calvuz.net" # replace with your own
+EMAIL="calvuzs3@gmail.com"             # replace with your own
 
 # Script Vars
-REPO_URL="https://github.com/calvuzs3/web-portfolio.git"
-APP_DIR=./web-portfolio
+REPO_URL="git@github.com:calvuzs3/web-portfolio.git"
+APP_DIR="." # deploy.sh lives in the project root; always run it from there
 SWAP_SIZE="1G" # Swap size of 1GB
 
 # Update package list and upgrade existing packages
@@ -44,39 +39,18 @@ fi
 sudo systemctl enable docker
 sudo systemctl start docker
 
-# Clone the Git repository
-if [ -d "$APP_DIR" ]; then
-  echo "Directory $APP_DIR already exists. Pulling latest changes..."
-  cd $APP_DIR && git pull
+# Update the repository (deploy.sh lives in $APP_DIR, the project root, so no cd needed)
+if [ -d ".git" ]; then
+  echo "Pulling latest changes from $REPO_URL..."
+  git pull
 else
-  echo "Cloning repository from $REPO_URL..."
-  # git clone $REPO_URL $APP_DIR
-  cd $APP_DIR
+  echo "ERROR: $APP_DIR is not a git repository. Clone it first with:"
+  echo "  git clone $REPO_URL"
+  exit 1
 fi
-cd ..
-
-# For Docker internal communication ("db" is the name of Postgres container)
-DATABASE_URL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@db:5432/$POSTGRES_DB"
-
-# For external tools (like Drizzle Studio)
-DATABASE_URL_EXTERNAL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB"
-
-# Create the .env file inside the app directory (~/myapp/.env)
-echo "POSTGRES_USER=$POSTGRES_USER" >"$APP_DIR/.env"
-echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >>"$APP_DIR/.env"
-echo "POSTGRES_DB=$POSTGRES_DB" >>"$APP_DIR/.env"
-echo "DATABASE_URL=$DATABASE_URL" >>"$APP_DIR/.env"
-echo "DATABASE_URL_EXTERNAL=$DATABASE_URL_EXTERNAL" >>"$APP_DIR/.env"
-
-# These are just for the demo of env vars
-echo "SECRET_KEY=$SECRET_KEY" >>"$APP_DIR/.env"
-echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >>"$APP_DIR/.env"
 
 # Restart Nginx to apply the new configuration
 sudo systemctl restart nginx
-
-# Navigate to app directory for Docker operations
-cd $APP_DIR
 
 echo "=== SAFE DOCKER DEPLOYMENT ==="
 
@@ -119,13 +93,12 @@ echo "=== RECENT LOGS ==="
 sudo docker compose logs --tail=20
 
 # Output final message
-echo "Safe deployment complete. 
+echo "Safe deployment complete.
 
-✅ PostgreSQL data preserved
 ✅ Docker images preserved
 ✅ Only application containers rebuilt
 
-Your Next.js app and PostgreSQL database are now running. 
+Your Next.js app is now running.
 Next.js is available at https://$DOMAIN_NAME
 
 === TROUBLESHOOTING COMMANDS ===

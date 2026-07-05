@@ -3,13 +3,13 @@ import { baseURL } from "@/app/resources";
 
 export async function generateMetadata() {
   return {
-    title: "Privacy Policy — QReport",
+    title: "Privacy Policy — Quick Report",
     description:
-      "Privacy policy for the QReport Android application by Luca Calvetti.",
+      "Privacy policy for the Quick Report Android application by Luca Calvetti.",
     openGraph: {
-      title: "Privacy Policy — QReport",
+      title: "Privacy Policy — Quick Report",
       description:
-        "Privacy policy for the QReport Android application by Luca Calvetti.",
+        "Privacy policy for the Quick Report Android application by Luca Calvetti.",
       type: "website",
       url: `https://${baseURL}/work/qreport/privacy-policy`,
     },
@@ -23,12 +23,12 @@ export default function PrivacyPolicy() {
       <Column gap="4">
         <Heading variant="display-strong-s">Privacy Policy</Heading>
         <Text variant="heading-default-xs" onBackground="neutral-weak">
-          QReport
+          Quick Report
         </Text>
       </Column>
 
       <Text variant="body-default-s" onBackground="neutral-weak">
-        Ultimo aggiornamento: Giugno 2026 · Versione app: 1.0
+        Ultimo aggiornamento: Luglio 2026 · Versione app: 1.0.0
       </Text>
 
       {/* Summary highlight */}
@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
           IN SINTESI
         </Text>
         <Text variant="body-default-m">
-          QReport non raccoglie, non trasmette e non vende alcun dato personale a terze parti.
+          Quick Report non raccoglie, non trasmette e non vende alcun dato personale a terze parti.
           Tutti i dati inseriti nell'app rimangono sul dispositivo dell'utente o sul server
           scelto dall'utente stesso.
         </Text>
@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
           1. Informazioni generali
         </Heading>
         <Text variant="body-default-m">
-          QReport è un'applicazione professionale per tecnici di campo, progettata per la
+          Quick Report è un'applicazione professionale per tecnici di campo, progettata per la
           gestione di report di ispezione su celle robotizzate e impianti industriali.
           Lo sviluppatore è Luca Calvetti (
           <a href="mailto:calvuzs3@gmail.com">calvuzs3@gmail.com</a>).
@@ -69,13 +69,13 @@ export default function PrivacyPolicy() {
           2. Dati raccolti
         </Heading>
         <Text variant="body-default-m">
-          QReport <strong>non raccoglie dati personali</strong>. Nello specifico:
+          Quick Report <strong>non raccoglie dati personali</strong>. Nello specifico:
         </Text>
         <Column as="ul" gap="4" paddingLeft="16">
           <Text as="li" variant="body-default-m">Non viene richiesto alcun account Google, Facebook o analogo.</Text>
           <Text as="li" variant="body-default-m">Non vengono inviati dati analitici o di utilizzo a server di terze parti.</Text>
           <Text as="li" variant="body-default-m">Non vengono utilizzati SDK pubblicitari o di tracciamento.</Text>
-          <Text as="li" variant="body-default-m">Non vengono raccolti identificativi del dispositivo, indirizzi IP o dati di localizzazione.</Text>
+          <Text as="li" variant="body-default-m">Non vengono raccolti indirizzi IP o dati di localizzazione.</Text>
         </Column>
       </Column>
 
@@ -100,7 +100,7 @@ export default function PrivacyPolicy() {
           4. Sincronizzazione opzionale
         </Heading>
         <Text variant="body-default-m">
-          QReport include una funzionalità di sincronizzazione remota{" "}
+          Quick Report include una funzionalità di sincronizzazione remota{" "}
           <strong>opzionale e disattivata per impostazione predefinita</strong>.
           Se l'utente sceglie di attivarla, può configurare l'URL di un proprio server Ktor/PostgreSQL.
           In questo caso:
@@ -144,7 +144,7 @@ export default function PrivacyPolicy() {
         <Text variant="body-default-m">
           Tutti i dati sono sotto il controllo esclusivo dell'utente. È possibile eliminare
           tutti i dati dell'app in qualsiasi momento tramite le impostazioni di sistema Android
-          (<em>Impostazioni → App → QReport → Cancella dati</em>) oppure disinstallando l'applicazione.
+          (<em>Impostazioni → App → Quick Report → Cancella dati</em>) oppure disinstallando l'applicazione.
         </Text>
       </Column>
 
@@ -154,7 +154,7 @@ export default function PrivacyPolicy() {
           7. Minori
         </Heading>
         <Text variant="body-default-m">
-          QReport è un'applicazione professionale destinata a tecnici adulti. Non è progettata
+          Quick Report è un'applicazione professionale destinata a tecnici adulti. Non è progettata
           né destinata a utenti di età inferiore ai 18 anni.
         </Text>
       </Column>
@@ -182,7 +182,7 @@ export default function PrivacyPolicy() {
       </Column>
 
       <Text variant="body-default-s" onBackground="neutral-weak">
-        © 2026 Luca Calvetti · QReport
+        © 2026 Luca Calvetti · Quick Report
       </Text>
     </Column>
   );
