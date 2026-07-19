@@ -1,0 +1,68 @@
+---
+title: "QuickStore — Warehouse Inventory with Photo Recognition"
+publishedAt: "2026-07-19"
+summary: "Android inventory management app that identifies warehouse parts by photo (OpenCV ORB + BFMatcher), across multiple locations. Built with Kotlin, Jetpack Compose, Room and Ktor."
+images:
+  - "/images/projects/quickstore/quickstore_feature_graphic_1024x500.png"
+team:
+  - name: "Luca Calvetti"
+    role: "Android Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/luca-calvetti-61691753/"
+link: "https://play.google.com/store/apps/details?id=net.calvuz.quickstore"
+---
+
+## Overview
+
+QuickStore is an Android inventory management app built for technicians and small
+teams handling spare parts and materials across one or more physical locations.
+Point the camera at a part and the app identifies it against the local catalogue —
+no barcode required. Like its sibling app Quick Report, it's **offline-first**: all
+data lives on the device by default, and syncing across multiple devices is
+entirely optional.
+
+## Key Features
+
+- **Photo-based article recognition** — identify warehouse parts by camera using
+  OpenCV (ORB feature extraction + BFMatcher), not barcodes or QR codes.
+- **Multi-location inventory** — track stock per warehouse/location, with optional
+  per-location reorder thresholds.
+- **Movement history** — carico, scarico, trasferimento and rettifica, kept as an
+  append-only log per article and location.
+- **Backup & export** — full ZIP backup/restore, plus CSV/Excel export of the
+  current inventory.
+- **Optional multi-device sync** — connect to your own QuickStore server; disabled
+  by default, never required to use the app.
+- **Fully offline** — no account needed for local use, no data leaves the device
+  without an explicit, user-configured server.
+
+## Privacy
+
+By default, QuickStore collects **no data beyond the device it runs on**. Optional
+multi-device sync, if activated, connects only to the server the user configures —
+the developer has no access to it.
+
+→ [Full Privacy Policy](/work/quickstore/privacy-policy)
+
+## Technologies Used
+
+- **Kotlin + Jetpack Compose** — modern Android UI toolkit, Clean Architecture.
+- **OpenCV (ORB + BFMatcher)** — on-device image feature matching for article recognition.
+- **Room / SQLite** — local database, offline-first storage.
+- **Hilt** — dependency injection.
+- **CameraX** — camera integration for capture and recognition.
+- **Ktor Client** — HTTP client for optional multi-device sync.
+- **Android Keystore / EncryptedSharedPreferences** — secure storage for sync credentials.
+- **WorkManager** — background photo transfer during sync.
+- **Apache POI** — Excel export.
+
+## Status
+
+| Stage | Status |
+|---|---|
+| Development | ✅ Complete, actively maintained |
+| Google Play | ✅ Published |
+
+## Download
+
+[Get it on Google Play](https://play.google.com/store/apps/details?id=net.calvuz.quickstore)
